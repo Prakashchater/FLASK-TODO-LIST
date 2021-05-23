@@ -4,41 +4,141 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- BOOTSTRAP TEMPLATES -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <!-- JAVASCRIPT TEMPLATES -->
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <!-- CSS TEMPLATES -->
+    <link rel="stylesheet" href="static/styles.css" />
+    <!-- FONT AWESOME ICON -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+      integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk"
+      crossorigin="anonymous"
+    />
+    <!-- GOOGLE FONT -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap" rel="stylesheet">
     <title>TODO List</title>
   </head>
   <body>
-    <h1 id="heading">TO DO LIST</h1>
-    <div class="top-container">
-      <form action="{{url_for('add_task')}}" method="POST">
-        <label>Add new Item: </label>
-        <input name="task" type="text" />
-        <input type="submit" value="Add Items" />
-      </form>
-    </div>
-    <div class="container">
-      {% if incomplete == [] :%}
-      <h2>No Task</h2>
-      {% endif %}
-      <h2>Incomplete Task</h2>
-      <ul>
-        {% for task in incomplete: %}
-        <li>
-          <a href="{{ url_for('edit_task', id=task.id)}}">Edit</a>
-          {{task.task}}
-          <a href="{{ url_for('delete_task', task_id=task.id)}}">Delete</a>
-          <a href="{{ url_for('complete', id=task.id) }}">Mark as Complete</a>
-        </li>
-        {% endfor %}
-      </ul>
-      <h2>Complete tasks</h2>
-      <ul>
-        {% for task in complete: %}
-        <li>
-          {{task.task}}
-          <a href="{{ url_for('delete_task', task_id=task.id)}}">Delete</a>
-        </li>
-        {% endfor %}
-      </ul>
+    <div id="main">
+      <h1 id="heading">TO DO LIST</h1>
+
+      <section id="no-task">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="card">
+              <div class="card-header bg-danger">
+                <h4 class="header-text">Add Task</h4>
+              </div>
+              <div class="card-body">
+                <div class="top-container">
+                  {% if incomplete == [] :%}
+                  <form action="{{url_for('add_task')}}" method="POST">
+                    <!-- <label>Add new Item: </label> -->
+                    <!-- <h5 class="card-title">Add Task: </h5> -->
+                    <input name="task" type="text" />
+                    <!-- <a href="{{url_for('add_task')}}" class="btn btn-primary">Add Task</a> -->
+                    <input type="submit" value="Add Items" />
+                  </form>
+                  {%else%}
+                  <form action="{{url_for('add_task')}}" method="POST">
+                    <!-- <label>Add new Item: </label> -->
+                    <!-- <h5 class="card-title">Add Task: </h5> -->
+                    <input name="task" type="text" />
+                    <!-- <a href="{{url_for('add_task')}}" class="btn btn-primary">Add Task</a> -->
+                    <input type="submit" value="Add Items" />
+                  </form>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="task">
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-12">
+            <div class="card">
+              <div class="card-header bg-primary">
+                <h4 class="header-text">Incomplete Task</h4>
+              </div>
+              <div class="card-body">
+                {% for task in incomplete: %}
+                <h5 class="card-title title-text">{{task.task}}</h5>
+                <div class="option">
+                  <a class="logo" href="{{ url_for('complete', id=task.id) }}">
+                    <i class="fas fa-check"></i>
+                  </a>
+                  <a class="logo" href="{{ url_for('edit_task', id=task.id)}}"
+                    ><i class="fas fa-edit"></i
+                  ></a>
+                  <a
+                    class="logo"
+                    href="{{ url_for('delete_task', task_id=task.id)}}"
+                  >
+                    <i class="fas fa-trash"></i>
+                  </a>
+                </div>
+
+                {% endfor %}
+                <br />
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12">
+            <div class="card">
+              <div class="card-header bg-primary">
+                <h4 class="header-text">Complete Tasks</h4>
+              </div>
+              <div class="card-body">
+                {% for task in complete: %}
+                <h5 class="card-title title-text">{{task.task}}</h5>
+                <div class="c-task">
+                  <a href="{{ url_for('delete_task', task_id=task.id)}}">
+                    <i class="fas fa-trash"></i>
+                  </a>
+                </div>
+
+                {% endfor %}
+                <br />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   </body>
 </html>
