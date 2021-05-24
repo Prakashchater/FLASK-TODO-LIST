@@ -13,14 +13,11 @@ app.config['SQLALCHEMY_TRACK_MODIFICATION'] = False
 db = SQLAlchemy(app)
 
 # CONFIGURE TABLE
-
-
 class TodoTable(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     # date = db.Column(db.String(100), nullable=False)
     task = db.Column(db.String(200), nullable=False)
     complete = db.Column(db.Boolean)
-
 
 db.create_all()
 

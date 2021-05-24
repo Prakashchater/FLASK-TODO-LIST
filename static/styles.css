@@ -12,11 +12,10 @@ body {
   }
 .top-container{
     text-align: center;
-    font-family: 'Oswald', sans-serif;
 }
 
 .header-text{
-    font-family: 'Abril Fatface', cursive;
+    font-family: 'Anton', sans-serif;
     text-align: center;
     height: 1em;
 }
@@ -35,7 +34,7 @@ body {
 }
 .title-text{
     text-align: left;
-    font-family: 'Satisfy', cursive;
+    font-family: 'Big Shoulders Display', cursive;
 }
 
 .c-task{
@@ -44,10 +43,24 @@ body {
     bottom: 35px;
 }
 
+.edit-title{
+    font-family: 'Big Shoulders Display', cursive;
+    letter-spacing: 1.5px;
+}
+
+.edit-container{
+    text-align: center;
+}
+
+.edit-body{
+    margin-left: 550px ;
+    /* margin-right: 10px; */
+    max-width: 18rem;
+}
 #heading {
     text-align: center;
     padding-top: 10px;
-    font-family: 'Abril Fatface', cursive;
+    font-family: 'Staatliches', cursive;
 
 }
 #task{

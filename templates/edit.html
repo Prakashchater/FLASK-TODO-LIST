@@ -4,14 +4,76 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- BOOTSTRAP TEMPLATES -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <!-- JAVASCRIPT TEMPLATES -->
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <!-- CSS TEMPLATES -->
+    <link rel="stylesheet" href="static/styles.css" />
+    <!-- FONT AWESOME ICON -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+      integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk"
+      crossorigin="anonymous"
+    />
+    <!-- GOOGLE FONT -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600&display=swap"
+      rel="stylesheet"
+    />
     <title>Document</title>
   </head>
   <body>
-    <form action="{{url_for('edit_task')}}" method="POST">
-      <p>Task name: {{task.task}}</p>
-      <input name="id" value="{{task.id}}" hidden="hidden" />
-      <input name="task" type="text" placeholder="New-tasks" />
-      <button type="submit">Change Task</button>
-    </form>
+    <div class="card border-primary edit-body">
+      <div class="card-header">
+        <h4 class="header-text">EDIT TASK</h4>
+      </div>
+      <div class="card-body text-dark">
+        <div class="edit-container">
+          <form action="{{url_for('edit_task')}}" method="POST">
+            {% if task.task == [] %}
+            <p>Please Change Task</p>
+            {% endif %}
+            <div class="card-title edit-title">Task name: {{task.task}} <br>
+              <br>
+            <input name="id" value="{{task.id}}" hidden="hidden" />
+            <input name="task" type="text" placeholder="New-tasks" />
+            <button type="submit">Change Task</button>
+          </form>
+        </div>
+      </div>
+      </div>
+    </div>
   </body>
 </html>
