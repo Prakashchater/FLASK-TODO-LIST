@@ -35,6 +35,10 @@ def get_all_task():
 @app.route('/add', methods=["POST"])
 def add_task():
     if request.method == "POST":
+        task = request.form["task"]
+        if not task:
+            return redirect(url_for('get_all_task'))
+
         new_task = TodoTable(
             task=request.form["task"],
             complete=False
