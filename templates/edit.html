@@ -62,13 +62,10 @@
       <div class="card-body text-dark">
         <div class="edit-container">
           <form action="{{url_for('edit_task')}}" method="POST">
-            {% if task.task == [] %}
-            <p>Please Change Task</p>
-            {% endif %}
             <div class="card-title edit-title">Task name: {{task.task}} <br>
               <br>
             <input name="id" value="{{task.id}}" hidden="hidden" />
-            <input name="task" type="text" placeholder="New-tasks" />
+            <input name="task" type="text" placeholder="New-tasks" /> <br>
             <button type="submit">Change Task</button>
           </form>
         </div>

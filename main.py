@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, url_for, redirect
+from flask import Flask, render_template, request, url_for, redirect, flash
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 
@@ -21,6 +21,9 @@ class TodoTable(db.Model):
 
 db.create_all()
 
+# class AddTask(FlaskForm):
+#     name = StringField("Add Task", validators=[DataRequired()])
+#     submit = SubmitField("")
 
 @app.route('/')
 def get_all_task():
