@@ -58,10 +58,16 @@ body {
 
     max-width: 18rem;
 }
+
+.btn{
+    margin-bottom: 6px;
+}
+
 #heading {
     text-align: center;
     padding-top: 10px;
     font-family: 'Staatliches', cursive;
+    
 
 }
 #task{
